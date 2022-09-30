@@ -1,0 +1,21 @@
+{% if tables_list %}
+  <ul>
+    {% for table in tables_list %}
+      <li><a href="/sql/{{table}}">{{table}}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No tables are available.</p>
+{% endif %}
+
+{% if dept_data %}
+  {{dept_data}}
+{% endif %}
+
+{% if emp_data %}
+  {{emp_data}}
+{% endif %}
+
+{% if reg_data %}
+  {{reg_data}}
+{% endif %}
