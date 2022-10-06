@@ -1,4 +1,3 @@
-from unittest.util import _MAX_LENGTH
 from django.db import models
 
 # Create your models here.
@@ -97,3 +96,16 @@ class Topic(models.Model):
 
   class Meta:
     db_table = 'topics'
+
+class Query(models.Model):
+  topic = models.ForeignKey(Topic, on_delete = models.CASCADE)
+  query_text = models.TextField()
+  query_desc = models.TextField()
+  created = models.DateTimeField('date created')
+  updated = models.DateTimeField('date updated')
+
+  class Meta:
+    db_table = 'queries'
+
+  def __str__(self) -> str:
+    return self.query_text
