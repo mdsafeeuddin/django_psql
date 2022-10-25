@@ -29,26 +29,30 @@
           Topics
         </div>
         <div class="card-body">
-          {% if sections_list %}
-          {% for section in sections_list %}
+          {% if sectops %}
+          {% for key, values in sectops.items %}
           <div class="accordion mb-1" id="accordionExample">
             <div class="accordion-item">
-              <h2 class="accordion-header" id="{{section.id}}">
+              <h2 class="accordion-header" id="{{forloop.counter}}">
                 <button class="accordion-button" 
                         type="button" 
                         data-bs-toggle="collapse" 
-                        data-bs-target="#{{section.section_title|cut:" "}}" 
+                        data-bs-target="#{{key|cut:" "}}" 
                         aria-expanded="true" 
-                        aria-controls="{{section.section_title|cut:" "}}">
-                  {{section.section_title}}
+                        aria-controls="{{key|cut:" "}}">
+                  {{key}}
                 </button>
               </h2>
-              <div id="{{section.section_title|cut:" "}}" 
+              <div id="{{key|cut:" "}}" 
                    class="accordion-collapse collapse show" 
-                   aria-labelledby="{{section.id}}" 
+                   aria-labelledby="{{forloop.counter}}" 
                    data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <ul>
+                    {% for value in values %}
+                    <li>{{value}}</li>
+                    {% endfor %}
+                  </ul>
                 </div>
               </div>
             </div>

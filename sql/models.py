@@ -83,6 +83,7 @@ class Section(models.Model):
 
   class Meta:
     db_table = 'sections'
+    ordering = ['created']
   
 class Topic(models.Model):
   section = models.ForeignKey(Section, on_delete = models.CASCADE)
@@ -96,6 +97,7 @@ class Topic(models.Model):
 
   class Meta:
     db_table = 'topics'
+    ordering = ['created']
 
 class Query(models.Model):
   topic = models.ForeignKey(Topic, on_delete = models.CASCADE)
@@ -106,6 +108,7 @@ class Query(models.Model):
 
   class Meta:
     db_table = 'queries'
+    ordering = ['created']
 
   def __str__(self) -> str:
     return self.query_text
