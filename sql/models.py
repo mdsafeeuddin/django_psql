@@ -1,4 +1,6 @@
+
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -103,8 +105,8 @@ class Query(models.Model):
   topic = models.ForeignKey(Topic, on_delete = models.CASCADE)
   query_text = models.TextField()
   query_desc = models.TextField()
-  created = models.DateTimeField('date created')
-  updated = models.DateTimeField('date updated')
+  created = models.DateTimeField('date created', default=datetime.datetime.now())
+  updated = models.DateTimeField('date updated', default=datetime.datetime.now())
 
   class Meta:
     db_table = 'queries'

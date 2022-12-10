@@ -76,7 +76,6 @@ def topic(request, id):
   topic_id = id
   cursor.execute('SELECT * FROM queries where topic_id = %s', (topic_id, ))
   query_data = cursor.fetchall()
-  print(query_data)
   context = {
     'query_data': query_data,
     'sectops':reordered_sectops,
